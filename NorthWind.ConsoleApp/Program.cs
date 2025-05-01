@@ -1,2 +1,7 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using NorthWind.Entities.Interfaces;
+using NorthWind.ConsoleApp.Services;
+
+IUserActionWriter Writer = default;
+
+AppLogger Logger = new AppLogger(Writer);
+Logger.WriteLog("Application started.");
