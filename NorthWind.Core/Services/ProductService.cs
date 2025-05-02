@@ -1,9 +1,9 @@
 ﻿using NorthWind.Entities.Interfaces;
 using NorthWind.Entities.ValueObjects;
 
-namespace NorthWind.ConsoleApp.Services;
+namespace NorthWind.Core.Services;
 
-internal class ProductService(IUserActionWriter writer)
+internal class ProductService(IUserActionWriter writer):IProductService
 {
     public void Add(string user, string productName)
     {

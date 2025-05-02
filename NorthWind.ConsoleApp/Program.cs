@@ -1,20 +1,16 @@
 ﻿using Microsoft.Extensions.Hosting;
-using NorthWind.ConsoleApp.Services;
-using NorthWind.Entities.Interfaces;
-using NorthWind.Writers;
 using Microsoft.Extensions.DependencyInjection;
+using NorthWind.Entities.Interfaces;
 
 HostApplicationBuilder Builder = Host.CreateApplicationBuilder();
 
-Builder.Services.AddConsoleWriter();
-//Builder.Services.AddSingleton<IUserActionWriter, ConsoleWriter>();
-//Builder.Services.AddSingleton<IUserActionWriter, DebugWriter>();
-Builder.Services.AddSingleton<AppLogger>();
-Builder.Services.AddSingleton<ProductService>();
+
+Builder.Services.AddNorthWindServices();
+
 using IHost AppHost = Builder.Build();
 
-AppLogger Logger = AppHost.Services.GetRequiredService<AppLogger>();
+IAppLogger Logger = AppHost.Services.GetRequiredService<IAppLogger>();
 Logger.WriteLog("Application started.");
 
-ProductService Service = AppHost.Services.GetRequiredService<ProductService>();
+IProductService Service = AppHost.Services.GetRequiredService<IProductService>();
 Service.Add("Demo", "Azucar refinada");

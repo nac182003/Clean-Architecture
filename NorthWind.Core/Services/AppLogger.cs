@@ -1,8 +1,8 @@
 ﻿using NorthWind.Entities.Interfaces;
 using NorthWind.Entities.ValueObjects;
 
-namespace NorthWind.ConsoleApp.Services;
-internal class AppLogger(IEnumerable<IUserActionWriter> writers)
+namespace NorthWind.Core.Services;
+internal class AppLogger(IEnumerable<IUserActionWriter> writers):IAppLogger
 {
     public void WriteLog(string message)
     {
